@@ -6,7 +6,7 @@ class Solution {
         int prev=-1;
         return helper(curr,prev,nums,dp);
     }
-    int helper(int curr,int prev,int []nums,Integer[][]dp){
+   private static int helper(int curr,int prev,int []nums,Integer[][]dp){
         if(curr==nums.length)return 0;
         if(dp[curr][prev+1]!=null)return dp[curr][prev+1];
         int taken=0;
