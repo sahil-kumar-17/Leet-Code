@@ -1,5 +1,5 @@
 class Solution {
-    public static int[][] merge(int[][] intervals) {
+    public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals,(a,b)->a[0]-b[0]);
         List<int[]>ans=new ArrayList<>();
         int curr[]=intervals[0];
