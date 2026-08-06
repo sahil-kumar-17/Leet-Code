@@ -6,9 +6,8 @@ class Solution {
         }
         int makeShift[][]=new int[intervals.length+1][intervals[0].length];
         for(int i=0;i<intervals.length;i++){
-            for(int j=0;j<intervals[0].length;j++){
-                makeShift[i][j]=intervals[i][j];
-            }
+                makeShift[i]=intervals[i];
+            
         }
         makeShift[intervals.length]=newInterval;
         Arrays.sort(makeShift,(a,b)->a[0]-b[0]);
