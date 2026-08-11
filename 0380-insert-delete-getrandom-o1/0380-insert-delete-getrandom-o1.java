@@ -1,6 +1,6 @@
 class RandomizedSet {
     HashSet<Integer> mySet = new HashSet<>();
-
+    List<Integer>mylist=new ArrayList<>();
     public RandomizedSet() {
 
     }
@@ -10,6 +10,7 @@ class RandomizedSet {
             return false;
         } else {
             mySet.add(val);
+            mylist.add(val);
         }
         return true;
     }
@@ -19,14 +20,14 @@ class RandomizedSet {
             return false;
         } else {
             mySet.remove(val);
+            mylist.remove(Integer.valueOf(val));
         }
         return true;
     }
 
     public int getRandom() {
-        Integer[] arr = mySet.toArray(new Integer[mySet.size()]);
-        int index = (int) (Math.random() * arr.length);
-        return arr[index];
+        int index = (int) (Math.random() * mylist.size());
+        return mylist.get(index);
 
     }
 }
