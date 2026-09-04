@@ -1,12 +1,11 @@
 class Solution {
     public int reverseBits(int n) {
-        StringBuilder s=new StringBuilder(Integer.toBinaryString(n));
-        s.reverse();
-        while(s.length()<Integer.SIZE){
-            s.append(0);
+        int ans=0;
+        for(int i=0;i<32;i++){
+            ans=ans<<1;
+            ans=ans|(n&1);
+            n=n>>>1;
         }
-        String res=s.toString();
-        System.out.println(res);
-        return Integer.parseInt(res,2);
+        return ans;
     }
 }
