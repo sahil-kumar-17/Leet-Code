@@ -7,8 +7,8 @@ class Solution {
         if (i > nums.length - 1) {            
             return xor;
         }
-        xor^=nums[i];
-        int pick=helper(i+1,xor,nums);
+        
+        int pick=helper(i+1,xor^=nums[i],nums);
         xor^=nums[i];
         int notpick=helper(i+1,xor,nums);
         return pick+notpick;
