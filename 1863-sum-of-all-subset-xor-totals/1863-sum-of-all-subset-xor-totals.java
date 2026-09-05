@@ -1,18 +1,16 @@
 class Solution {
     public int subsetXORSum(int[] nums) {
-        return helper(0, 0, 0, nums);
+        return helper(0, 0, nums);
     }
 
-    private int helper(int i, int xor, int sum, int[] nums) {
+    private int helper(int i, int xor, int[] nums) {
         if (i > nums.length - 1) {            
-            sum += xor;
-            return sum;
+            return xor;
         }
         xor^=nums[i];
-        int pick=helper(i+1,xor,sum,nums);
+        int pick=helper(i+1,xor,nums);
         xor^=nums[i];
-        int notpick=helper(i+1,xor,sum,nums);
-        sum=pick+notpick;
-        return sum;
+        int notpick=helper(i+1,xor,nums);
+        return pick+notpick;
     }
 }
