@@ -9,8 +9,7 @@ class Solution {
         }
         
         int pick=helper(i+1,xor^=nums[i],nums);
-        xor^=nums[i];
-        int notpick=helper(i+1,xor,nums);
+        int notpick=helper(i+1,xor^=nums[i],nums);
         return pick+notpick;
     }
 }
