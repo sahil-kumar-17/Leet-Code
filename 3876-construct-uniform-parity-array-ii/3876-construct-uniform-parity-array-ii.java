@@ -1,17 +1,13 @@
 class Solution {
     public boolean uniformArray(int[] nums) {
-        int odd = 0;
-        int even = 0;
-        for (int i : nums) {
-            if (i % 2 == 0) {
-                even++;
-            } else {
-               odd++;
-            }
+        int min=(int)1e9;
+        int even=0;
+        for(int i:nums){
+            min=Math.min(i,min);
+            if(i%2==0)even++;
         }
-        if(odd==nums.length||even==nums.length)return true;
-        Arrays.sort(nums);
-        if(nums[0]%2==0)return false;
+        if(even==nums.length)return true;
+        if(min%2==0)return false;
         return true;
     }
 }
