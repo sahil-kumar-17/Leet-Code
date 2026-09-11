@@ -5,13 +5,12 @@ class Solution {
             if(digits[i]==0)continue;
             for(int j=0;j<digits.length;j++){
                 for(int k=0;k<digits.length;k++){
-                    if(i==j||i==k||k==i||k==j){
+                    if(i==j||i==k||k==j||digits[k]%2!=0){
                         continue;
                     }
                     int num=digits[i]*100+digits[j]*10+digits[k];
-                    if(num%2==0){
-                        myset.add(num);
-                    }
+                    myset.add(num);
+                    
                 }
             }
         }
