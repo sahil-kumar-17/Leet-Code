@@ -1,33 +1,22 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-        Stack<Integer> myStack = new Stack();
-        int op1 = 0;
-        int op2 = 0;
-        int res = 0;
-        for (String s : tokens) {
-            if (!s.equals("+") && !s.equals("-") && !s.equals("*") && !s.equals("/")) {
+        Stack<Integer>myStack=new Stack<>();
+        String operators="+-*/";
+        for(String s:tokens){
+            if(operators.indexOf(s)!=-1){
+                int n1=myStack.pop();
+                int n2=myStack.pop();
+                if(s.equals("+")){
+                    myStack.push(n1+n2);
+                }else if(s.equals("-")){
+                    myStack.push(n2-n1);
+                }else if(s.equals("*")){
+                    myStack.push(n1*n2);
+                }else if(s.equals("/")){
+                    myStack.push(n1!=0?n2/n1:0);
+                }
+            }else{
                 myStack.push(Integer.parseInt(s));
-            }
-            if (s.equals("+")) {
-                op1 = myStack.pop();
-                op2 = myStack.pop();
-                res = op1 + op2;
-                myStack.push(res);
-            } else if (s.equals("-")) {
-                op1 = myStack.pop();
-                op2 = myStack.pop();
-                res = op2-op1;
-                myStack.push(res);
-            } else if (s.equals("*")) {
-                op1 = myStack.pop();
-                op2 = myStack.pop();
-                res = op1 * op2;
-                myStack.push(res);
-            } else if (s.equals("/")) {
-                op1 = myStack.pop();
-                op2 = myStack.pop();
-                res = op1!=0?op2/op1:0;
-                myStack.push(res);
             }
         }
         return myStack.pop();
