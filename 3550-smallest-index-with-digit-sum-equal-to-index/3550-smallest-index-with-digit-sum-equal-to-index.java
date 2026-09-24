@@ -1,9 +1,6 @@
 class Solution {
     public int smallestIndex(int[] nums) {
         for(int i=0;i<nums.length;i++){
-            if(nums[i]<10&&nums[i]==i){
-                return i;
-            }
             int digit=0;
             while(nums[i]>=10){
                 digit+=nums[i]%10;
