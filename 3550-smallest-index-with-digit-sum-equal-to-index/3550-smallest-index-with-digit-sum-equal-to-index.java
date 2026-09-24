@@ -4,16 +4,13 @@ class Solution {
             if(nums[i]<10&&nums[i]==i){
                 return i;
             }
-            int number=nums[i];
             int digit=0;
-            int totalSum=0;
-            while(number>=10){
-                digit=number%10;
-                totalSum+=digit;
-                number/=10;
+            while(nums[i]>=10){
+                digit+=nums[i]%10;
+                nums[i]/=10;
             }
-            totalSum+=number;
-            if(totalSum==i){
+            digit+=nums[i];
+            if(digit==i){
                 return i;
             }
         }
