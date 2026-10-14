@@ -3,7 +3,7 @@ class Solution {
         int tempsum = sum;
         int digit = 9;
         StringBuilder ans=new StringBuilder();
-        while (tempsum > 0 && digit > 0) {
+        while (tempsum > 0 && digit > 0 &&ans.length()<=num) {
             if (digit > tempsum) {
                 digit--;
             } else if (digit <= tempsum) {
