@@ -15,16 +15,9 @@
  */
 class Solution {
     public int minDepth(TreeNode root) {
-        return dfs(root,0);
-    }
-    private int dfs(TreeNode root,int count){
-        if(root==null)return count;
-        if(root.left!=null&&root.right==null){
-            return dfs(root.left,count+1);
-        }else if(root.right!=null&&root.left==null){
-            return dfs(root.right,count+1);
-        }else {
-            return Math.min(dfs(root.left,count+1),dfs(root.right,count+1));
-        }
+        if(root==null)return 0;
+        if(root.right==null)return minDepth(root.left)+1;
+        if(root.left==null)return minDepth(root.right)+1;
+        return Math.min(minDepth(root.left)+1,minDepth(root.right)+1);
     }
 }
