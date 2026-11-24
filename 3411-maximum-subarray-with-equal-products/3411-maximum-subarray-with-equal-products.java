@@ -1,27 +1,19 @@
 class Solution {
     public int maxLength(int[] nums) {
-        int n = nums.length - 1;
-        int start = 0;
+        int n = nums.length;
         int max = 0;
-        while (start <= n) {
-            List<Integer> myList = new ArrayList<>();
-            int end = start;
-            while (end <= n) {
-                myList.add(nums[end]);
-                int gcd = myList.get(0);
-                int lcm = myList.get(0);
-                int product = myList.get(0);
-                for (Integer i = 1; i < myList.size(); i++) {
-                    gcd = GCD(gcd, myList.get(i));
-                    lcm = LCM(lcm, myList.get(i));
-                    product *= myList.get(i);
+        for (int start = 0; start < n; start++) {
+            int gcd = nums[start];
+            int lcm = nums[start];
+            int prod = nums[start];
+            for (int end = start + 1; end < nums.length; end++) {
+                prod *= nums[end];
+                gcd = GCD(gcd, nums[end]);
+                lcm = LCM(lcm, nums[end]);
+                if (prod == gcd * lcm) {
+                    max = Math.max(max, end - start + 1);
                 }
-                if (product == (gcd * lcm)) {
-                    max = Math.max(myList.size(), max);
-                }
-                end++;
             }
-            start++;
         }
         return max;
     }
